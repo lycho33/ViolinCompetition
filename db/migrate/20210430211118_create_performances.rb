@@ -8,6 +8,8 @@ class CreatePerformances < ActiveRecord::Migration[6.1]
       t.string :piece
       t.string :video
 
+      t.belongs_to :user
+
       t.timestamps
     end
   end
