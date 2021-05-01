@@ -1,0 +1,11 @@
+<h1>Showing This Performance</h1>
+
+<h2><%= @performance.performer %></h2>
+<p>Division: <%= @performance.division %></p>
+<p>Round: <%= @performance.round %></p>
+<p>Date: <%= @performance.date %></p>
+<p>Pieces: <%= @performance.piece %></p>
+<p>Video: <%= @performance.video %></p>
+
+<%= link_to 'Edit the information', edit_performance_path %><br>
+<%= link_to 'Delete this performance', performance_path, method: :delete %>

@@ -1,0 +1,13 @@
+<h1>All Performances</h1>
+
+<% @performances.each do |performance| %>
+    <h3>Performance <%= performance.id %></h3>
+    <%= link_to performance.performer, performance_path(performance) %>
+    Performer: <%= performance.performer %><br>
+    Division: <%= performance.division %><br>
+    Round: <%= performance.round %><br>
+    Date: <%= performance.date %><br>
+    Piece: <%= performance.piece %><br>
+    Video: <%= performance.video %><br><br>
+<% end %>
+

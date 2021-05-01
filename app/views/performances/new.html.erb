@@ -1,0 +1,25 @@
+<h1>Upload a New Performance</h1>
+
+<%= form_for(@performance) do |f|%>
+    <%= f.label :performer%>
+    <%= f.text_field :performer%><br>
+
+    <%= f.label :division %>
+    <%= f.text_field :division %><br>
+
+    <%= f.label :round %>
+    <%= f.number_field :round %><br>
+
+    <%= f.label :date %>
+    <%= f.date_field :date %>
+    <%= f.time_field :date %><br>
+
+    <%= f.label :piece %>
+    <%= f.text_field :piece %><br>
+
+    <%= f.label :video %>
+    <%= f.url_field :video %><br>
+
+    <%= f.submit %>
+
+<% end %>

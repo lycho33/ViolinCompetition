@@ -1,0 +1,11 @@
+<h1> LogIn </h1>
+
+<%= flash[:message] if flash[:message] %>
+
+<%= form_with(scope: :user, url: login_path)  do |f|%>
+    <%= f.label :username %>
+    <%= f.text_field :username %><br>
+    <%= f.label :password %>
+    <%= f.password_field :password %><br>
+    <%= f.submit "Sign In" %>
+<% end %>
