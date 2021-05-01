@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
    before_action :users_performances, only: [:show]
+   before_action :user_current_id, only: [:show]
 
     #Sign Up
     def new
@@ -18,7 +19,7 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find_by_id(params[:id])
+        @user = User.find_by(id: params[:id])
         redirect_to '/' if !@user
     end
 
@@ -29,5 +30,9 @@ class UsersController < ApplicationController
 
     def users_performances
         @performances = current_user.performances
+    end
+
+    def user_current_id
+        @user = current_user.id
     end
 end

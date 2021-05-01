@@ -14,9 +14,10 @@
     <br>
     <div>
       <% if logged_in? %>
-        <%= link_to 'Profile', @user %> |
+        <%= link_to 'Profile', user_path(@user) %> |
         <%= link_to 'All Performances', performances_path %> |
         <%= link_to 'Add Performance', new_performance_path %> |
+        <%= link_to 'All Blogs', user_blogs_path(@user) %> |
         <%= link_to 'Logout', logout_path, method: 'delete' %>
       <% else %>
         <%= link_to 'Sign In', signup_path %> |

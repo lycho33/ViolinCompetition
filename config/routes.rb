@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :performers
   root('sessions#home')
 
   get '/signup', to: 'users#new', as: 'signup'
@@ -10,10 +9,14 @@ Rails.application.routes.draw do
 
   delete '/logout', to: 'sessions#logout'
   
-  resources :users
+  resources :users do
+    resources :blogs
+  end
   resources :performances do
     resources :comments, only: [:create]
   end
+
+  resources :performers
 
   get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
   

@@ -1,2 +1,0 @@
-class PerformersController < ApplicationController
-end
