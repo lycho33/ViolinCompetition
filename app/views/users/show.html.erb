@@ -1,3 +1,12 @@
-<h1>Welcome <%= @user.username.capitalize %></h1>
+<h1>Welcome <%= @user.name.capitalize %></h1>
 
-<%= link_to 'Logout', logout_path, method: 'delete' %>
+<% @performances.each do |performance| %>
+    <h3>Performance <%= performance.id %></h3>
+    <%= link_to performance.performer, performance_path(performance) %><br>
+    Division: <%= performance.division %><br>
+    Round: <%= performance.round %><br>
+    Date: <%= performance.date %><br>
+    Piece: <%= performance.piece %><br>
+    Video: <%= performance.video %><br><br>
+<% end %>
+

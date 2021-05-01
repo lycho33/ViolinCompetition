@@ -9,8 +9,12 @@ Rails.application.routes.draw do
 
   delete '/logout', to: 'sessions#logout'
   
-  resources :comments
-  resources :performances
   resources :users
+  resources :performances do
+    resources :comments, only: [:create]
+  end
+
+  get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

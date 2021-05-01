@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-   
+   before_action :users_performances, only: [:show]
+
     #Sign Up
     def new
         @user = User.new
@@ -24,5 +25,9 @@ class UsersController < ApplicationController
     private
     def user_params
         params.require(:user).permit(:name, :username, :password, :email)
+    end
+
+    def users_performances
+        @performances = current_user.performances
     end
 end

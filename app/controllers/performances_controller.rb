@@ -22,13 +22,15 @@ class PerformancesController < ApplicationController
 
     def show
         @performance = Performance.find_by(id: params[:id])
+        @comments = @performance.comments
+        @comment = Comment.new
     end
 
     def edit
         @performance = Performance.find_by(id: params[:id])
     end
 
-    def updated
+    def update
         @performance = Performance.find_by(id: params[:id])
         @performance.update(performance_params)
         if @performance.save

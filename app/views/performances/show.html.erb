@@ -8,4 +8,18 @@
 <p>Video: <%= @performance.video %></p>
 
 <%= link_to 'Edit the information', edit_performance_path %><br>
-<%= link_to 'Delete this performance', performance_path, method: :delete %>
+<%= link_to 'Delete this performance', performance_path, method: :delete %><br><br>
+
+<%= form_with(model: [@performance, @comment]) do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :performance_id, value: @performance.id %>
+    <%= f.text_area :content %>
+    <%= f.submit :comment %>
+<% end %>
+
+Comments: 
+<ul>
+    <%= render @comments %>
+</ul>
+
+

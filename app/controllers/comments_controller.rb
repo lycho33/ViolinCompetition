@@ -7,8 +7,10 @@ class CommentsController < ApplicationController
         @performance = Performance.find_by_id(params[:performance_id])
         @comment = @performance.comments.build(comment_params)
         if @comment.save
+            flash[:message] = "Yay! You just commented"
             redirect_to performance_path(@performance)
         else
+            flash[:message] = "Aw you couldn't comment. Try again."
             redirect_to performance_path(@performance)
         end
     end

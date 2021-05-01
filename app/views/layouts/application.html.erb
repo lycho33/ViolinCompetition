@@ -14,6 +14,7 @@
     <br>
     <div>
       <% if logged_in? %>
+        <%= link_to 'Profile', @user %> |
         <%= link_to 'All Performances', performances_path %> |
         <%= link_to 'Add Performance', new_performance_path %> |
         <%= link_to 'Logout', logout_path, method: 'delete' %>

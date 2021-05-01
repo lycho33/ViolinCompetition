@@ -1,0 +1,26 @@
+<h1>Edit the Information for this Performance</h1>
+
+<%= form_with(model: @performance) do |f| %>
+    <%= f.label :performer%>
+    <%= f.text_field :performer%><br>
+
+    <%= f.label :division %>
+    <%= f.text_field :division %><br>
+
+    <%= f.label :round %>
+    <%= f.number_field :round %><br>
+
+    <%= f.label :date %>
+    <%= f.date_field :date %>
+    <%= f.time_field :date %><br>
+
+    <%= f.label :piece %>
+    <%= f.text_field :piece %><br>
+
+    <%= f.label :video %>
+    <%= f.url_field :video %><br><br>
+
+    <%= f.submit %>
+<% end %><br>
+
+<%= link_to 'Delete this performance', performance_path, method: :delete %>
