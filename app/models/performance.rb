@@ -4,4 +4,8 @@ class Performance < ApplicationRecord
     has_many :comments
     has_many :users, through: :comments
 
+    validates :performer, presence: true, uniqueness: true
+    validates :piece, presence: true
+    validates :video, presence: true
+
 end
