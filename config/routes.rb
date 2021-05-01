@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :performers
   root('sessions#home')
 
   get '/signup', to: 'users#new', as: 'signup'
