@@ -2,10 +2,9 @@
 
 <ul>
     <% @blogs.each do |blog| %>
-        <%= blog.title %>
-        <%= blog.date %><br>
-        <%= blog.content %>
+        <%= link_to blog.title, user_blog_path(@user, blog) %><br>
+      
     <% end %>
 </ul>
 
-<%= link_to 'New Blog', new_user_blog_path %>
+<%= link_to 'Create a New Blog', new_user_blog_path %>

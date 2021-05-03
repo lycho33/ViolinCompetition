@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :blogs
   end
   resources :performances do
-    resources :comments, only: [:create]
+    resources :comments, only: [:create] #this nested route isn't really used
   end
 
   resources :performers

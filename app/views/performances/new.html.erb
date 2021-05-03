@@ -1,5 +1,8 @@
 <h1>Upload a New Performance</h1>
 
+<%= render partial: 'errors/errors', locals: {model: @performance } %>
+
+
 <%= form_for(@performance) do |f|%>
     <%= f.label :performer%>
     <%= f.text_field :performer%><br>

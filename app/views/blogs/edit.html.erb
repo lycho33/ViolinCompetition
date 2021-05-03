@@ -1,0 +1,19 @@
+<h1>Edit this Blog</h1>
+
+<%= render partial: 'errors/errors', locals: {model: @blog } %>
+
+<%= form_with(model: [:user, @blog]) do |f|%>
+    <%= f.label :title%>
+    <%= f.text_field :title%><br>
+
+    <%= f.label :date %>
+    <%= f.date_field :date %><br>
+
+    <%= f.label :content %>
+    <%= f.text_area :content %><br><br>
+
+    <%= f.submit %>
+
+<% end %>
+
+<%= link_to 'Delete this Blog', user_blog_path(@user, @blog), method: :delete %>

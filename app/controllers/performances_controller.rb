@@ -43,6 +43,7 @@ class PerformancesController < ApplicationController
     def destroy
         @performance = Performance.find_by(id: params[:id])
         @performance.destroy
+        flash[:message] = "Performance Post was deleted"
         redirect_to performances_path
     end
 

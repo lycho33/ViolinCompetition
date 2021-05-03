@@ -1,5 +1,7 @@
 <h1>Sign Up</h1>
 
+<%= render partial: 'errors/errors', locals: {model: @user} if @user %>
+
 <%= form_with(model: @user, url: signup_path)  do |f|%>
     <%= f.label :name %>
     <%= f.text_field :name %><br>

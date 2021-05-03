@@ -1,1 +1,8 @@
 <h1>Show This Blog</h1>
+
+<p>Title: <%= @blog.title %> - <%= @blog.date %></p>
+<p>Content: <%= @blog.content %></p>
+
+
+<%= link_to 'Edit this blog', edit_user_blog_path(@blog) %><br>
+<%= link_to 'Delete this Blog', user_blog_path(@user, @blog), method: :delete %>

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
    before_action :users_performances, only: [:show]
-   before_action :user_current_id, only: [:show]
+   before_action :find_user, only: [:show]
 
     #Sign Up
     def new
@@ -12,15 +12,15 @@ class UsersController < ApplicationController
         if @user.save
             flash[:message] = "Successfully signed up."
             session[:user_id] = @user.id
-            redirect_to @user
+            redirect_to user_path(@user)
         else
             render :new
         end
     end
 
     def show
-        @user = User.find_by(id: params[:id])
-        redirect_to '/' if !@user
+        @user = current_user
+        # redirect_to '/' if !@user
     end
 
     private
@@ -34,5 +34,9 @@ class UsersController < ApplicationController
 
     def user_current_id
         @user = current_user.id
+    end
+
+    def find_user
+        @user = User.find_by_id(params[:user_id])
     end
 end

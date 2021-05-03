@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
     def home
+        @user = User.find_by(id: params[:id])
     end
 
     #for login

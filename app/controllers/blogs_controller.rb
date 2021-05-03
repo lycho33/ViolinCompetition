@@ -1,19 +1,8 @@
 class BlogsController < ApplicationController
-    before_action :find_user, only: [:new, :create, :show]
+    before_action :find_user
+
     def index
         @blogs = current_user.blogs
-        @user = current_user.id
-    end
-
-    def show
-        if params[:user_id]
-            @blog = @user.blogs.find_by(id: params[:id])
-            if @blog.nil?
-                redirect_to user_blogs_path(@user)
-            end
-        else
-            @blog = Blog.find_by(id: params[:id])
-        end
     end
 
     def new
@@ -25,14 +14,46 @@ class BlogsController < ApplicationController
     end
 
     def create
-        @blog = @user.blogs.build(blog_params)
+        @blog = current_user.blogs.build(blog_params)
+        @blog.user_id = current_user.id
         if @blog.save
-            redirect_to user_blog_path(@blog)
+            redirect_to user_blog_path(@user, @blog)
         else
             render :new
         end
     end
 
+    def show
+        if params[:user_id]
+            @blog = current_user.blogs.find_by(id: params[:id])
+            if @blog.nil?
+                redirect_to user_blogs_path(@user, @blog)
+            end
+        else
+            @blog = Blog.find_by(id: params[:id])
+        end
+    end
+
+    def edit
+        @blog = current_user.blogs.find_by(id: params[:id])
+    end
+
+    def update
+        @blog = current_user.blogs.find_by(id: params[:id])
+        @blog.update(blog_params)
+        if @blog.save
+            redirect_to user_blogs_path(@blog)
+        else
+            render :edit
+        end
+    end
+
+    def destroy
+        @blog = Blog.find_by(id: params[:id])
+        @blog.destroy
+        flash[:message] = "Blog was deleted"
+        redirect_to user_blogs_path
+    end
   
     private
     def blog_params

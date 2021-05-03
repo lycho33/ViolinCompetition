@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
+    before_action :redirect_if_not_logged_in
 
-    def new
+    def new #not needed?
     end
 
     def create
