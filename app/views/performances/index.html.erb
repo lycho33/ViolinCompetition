@@ -1,5 +1,12 @@
 <h1>All Performances</h1>
 
+<%= form_tag('/performances', method: 'get') do %>
+    <%= label_tag(:q, "Search for a performer:") %>
+    <%= text_field_tag(:q) %>
+    <%= submit_tag("Search") %>
+<% end %>
+
+
 <% @performances.each do |performance| %>
     <h3>Performance <%= performance.id %></h3>
     <%= link_to performance.performer, performance_path(performance) %><br>

@@ -1,12 +1,15 @@
 class PerformancesController < ApplicationController
     before_action :redirect_if_not_logged_in
 
-    def index
-        @performances = Performance.all
-    end
-
     def new
         @performance = Performance.new
+    end
+
+    def index
+        @performances = Performance.all
+        if params[:q] && !params[:q].empty? #if the user submitted a search
+            @performances = @performances.search(params[:q].downcase) #search through the collection we alaready have 
+        end
     end
 
     def create
