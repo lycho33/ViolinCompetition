@@ -2,7 +2,7 @@
 
 <h2>Users/show</h2>
 
-<h2>All the Performances You Commented On (but you wanted all the performances you posted)</h2>
+<h2>All the Performances <%= @user.name.capitalize %> Uploaded</h2>
 
 <% @performances.each do |performance| %>
     <h3>Performance <%= performance.id %></h3>
@@ -14,7 +14,7 @@
     Video: <%= performance.video %><br><br>
 <% end %>
 
-<h2>All Blogs You Posted</h2>
+<h2>All Blogs <%= @user.name.capitalize %> Posted</h2>
   <% @blogs.each do |blog| %>
         <ul><%= link_to blog.title, user_blog_path(@user, blog) %><br></ul>
 <% end %>

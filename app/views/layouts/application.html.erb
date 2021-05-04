@@ -8,11 +8,15 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" type="text/css" href="sessions/home.scss"/>
+
+
   </head>
 
   <body>
     <br>
-    <div>
+    <div class='outer'>
       <% if logged_in? %>
         <%= link_to 'Profile', user_path(current_user) %> | 
         <%= link_to 'All Performances', performances_path %> |
@@ -21,11 +25,14 @@
 
         <%= link_to 'Logout', logout_path, method: :delete %>
       <% else %>
+        <%= link_to 'Home', root_path %> |
         <%= link_to 'Sign Up', signup_path %> |
         <%= link_to 'Log In', login_path %>
       <% end %>
     </div>
-
-    <%= yield %>
+    <div class='inner'>
+        <%= yield %>
+    </div>
+  
   </body>
 </html>

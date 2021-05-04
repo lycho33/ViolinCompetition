@@ -25,7 +25,6 @@ class SessionsController < ApplicationController
     end
 
     def omniauth
-        binding.pry
         @user = User.find_or_create_by(username: auth[:info][:email]) do |u|
             u.email = auth[:info][:email]
             u.username = auth[:info][:email]
@@ -34,7 +33,7 @@ class SessionsController < ApplicationController
             u.provider = auth[:provider]
             u.password = SecureRandom.hex(10)
         end
-        
+
         if @user.valid?
             flash[:messsage] = "Signed IN with GOOGLE GOOD JOb"
             session[:user_id] = @user.id
