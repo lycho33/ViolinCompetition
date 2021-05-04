@@ -1,8 +1,6 @@
 <h1>Edit this Blog</h1>
 
-<%= render partial: 'errors/errors', locals: {model: @blog } %>
-
-<%= form_with(model: [:user, @blog]) do |f|%>
+<%= form_with(model: [@user, @blog]) do |f|%>
     <%= f.label :title%>
     <%= f.text_field :title%><br>
 
@@ -16,4 +14,4 @@
 
 <% end %>
 
-<%= link_to 'Delete this Blog', user_blog_path(@user, @blog), method: :delete %>
+<%= link_to 'Delete this Blog', user_blog_path(@user), method: :delete %>

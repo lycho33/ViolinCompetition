@@ -14,3 +14,8 @@
     Video: <%= performance.video %><br><br>
 <% end %>
 
+<h2>All Blogs You Posted</h2>
+  <% @blogs.each do |blog| %>
+        <ul><%= link_to blog.title, user_blog_path(@user, blog) %><br></ul>
+<% end %>
+

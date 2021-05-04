@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 
     def show
         @user = current_user
+        @blogs = current_user.blogs
         # redirect_to '/' if !@user
     end
 
@@ -29,7 +30,7 @@ class UsersController < ApplicationController
     end
 
     def users_performances
-        @performances = current_user.performances
+        @performances = current_user.created_performances
     end
 
     def user_current_id

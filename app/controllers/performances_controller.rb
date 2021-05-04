@@ -1,5 +1,6 @@
 class PerformancesController < ApplicationController
     before_action :redirect_if_not_logged_in
+    before_action :find_performance, only: [:show, :edit, :update, :destroy]
 
     def new
         @performance = Performance.new
@@ -24,17 +25,14 @@ class PerformancesController < ApplicationController
     end
 
     def show
-        @performance = Performance.find_by(id: params[:id])
         @comments = @performance.comments
         @comment = Comment.new
     end
 
     def edit
-        @performance = Performance.find_by(id: params[:id])
     end
 
     def update
-        @performance = Performance.find_by(id: params[:id])
         @performance.update(performance_params)
         if @performance.save
             redirect_to performance_path(@performance)
@@ -44,7 +42,6 @@ class PerformancesController < ApplicationController
     end
 
     def destroy
-        @performance = Performance.find_by(id: params[:id])
         @performance.destroy
         flash[:message] = "Performance Post was deleted"
         redirect_to performances_path
@@ -53,5 +50,9 @@ class PerformancesController < ApplicationController
     private
     def performance_params
         params.require(:performance).permit(:performer, :division, :round, :date, :piece, :video)
+    end
+
+    def find_performance
+        @performance = Performance.find_by(id: params[:id])
     end
 end

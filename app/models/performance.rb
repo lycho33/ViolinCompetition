@@ -8,9 +8,6 @@ class Performance < ApplicationRecord
     validates :piece, presence: true
     validates :video, presence: true
 
-    
+    scope :search, -> (params){where("LOWER(performer) LIKE ?", "%#{params}%")}
 
-    def self.search(params)
-        Performance.where("LOWER(performer) LIKE ?", "%#{params}%")
-    end
 end

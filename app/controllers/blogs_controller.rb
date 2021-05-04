@@ -2,7 +2,7 @@ class BlogsController < ApplicationController
     before_action :find_user
 
     def index
-        @blogs = current_user.blogs
+        @blogs = Blog.all
     end
 
     def new
@@ -24,14 +24,7 @@ class BlogsController < ApplicationController
     end
 
     def show
-        if params[:user_id]
-            @blog = current_user.blogs.find_by(id: params[:id])
-            if @blog.nil?
-                redirect_to user_blogs_path(@user, @blog)
-            end
-        else
-            @blog = Blog.find_by(id: params[:id])
-        end
+        @blog = Blog.find_by(id: params[:id])
     end
 
     def edit
