@@ -9,6 +9,9 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
+        #formatted string = @user 
+        #@user has normal params
+        #@performance.video = new string 
         if @user.save
             flash[:message] = "Successfully signed up."
             session[:user_id] = @user.id

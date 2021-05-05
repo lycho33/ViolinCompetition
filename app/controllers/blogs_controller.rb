@@ -3,6 +3,7 @@ class BlogsController < ApplicationController
 
     def index
         @blogs = Blog.all
+        @user = current_user
     end
 
     def new

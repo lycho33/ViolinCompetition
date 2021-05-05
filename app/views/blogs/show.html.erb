@@ -3,10 +3,10 @@
 <p>Title: <%= @blog.title %> - <%= @blog.date %></p>
 <p>Content: <%= @blog.content %></p>
 
-<% if current_user %>
+<% if @blog.user_id == current_user.id %>
     <%= link_to 'Edit this blog', edit_user_blog_path(@blog) %><br>
+    <%= link_to 'Delete this Blog', user_blog_path(@user, @blog), method: :delete %>
 <% else %>
-    <%= link_to 'back', user_blogs_path %>
+    <%= link_to 'back', user_blogs_path %><br>
 <% end %>
 
-<%= link_to 'Delete this Blog', user_blog_path(@user, @blog), method: :delete %>

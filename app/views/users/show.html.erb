@@ -1,7 +1,5 @@
 <h1>Welcome <%= @user.name.capitalize %></h1>
 
-<h2>Users/show</h2>
-
 <h2>All the Performances <%= @user.name.capitalize %> Uploaded</h2>
 
 <% @performances.each do |performance| %>
@@ -11,7 +9,9 @@
     Round: <%= performance.round %><br>
     Date: <%= performance.date %><br>
     Piece: <%= performance.piece %><br>
-    Video: <%= performance.video %><br><br>
+    Video: <%= performance.video %>
+    <!--- <iframe width="420" height="345" src="https://www.youtube.com/embed/iLYy7zkdfjk">
+    </iframe> -->
 <% end %>
 
 <h2>All Blogs <%= @user.name.capitalize %> Posted</h2>

@@ -7,8 +7,14 @@
 <p>Pieces: <%= @performance.piece %></p>
 <p>Video: <%= @performance.video %></p>
 
-<%= link_to 'Edit the information', edit_performance_path %><br>
-<%= link_to 'Delete this performance', performance_path, method: :delete %><br><br>
+<% if @performance.user_id == current_user.id %>
+    <%= link_to 'Edit the information', edit_performance_path %><br>
+    <%= link_to 'Delete this performance', performance_path, method: :delete %><br><br>
+<% else %>
+    <%= link_to 'back', performances_path %><br><br>
+<% end %>
+
+
 
 <%= form_with(model: [@performance, @comment]) do |f| %>
     <%= f.hidden_field :user_id, value: current_user.id %>
