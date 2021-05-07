@@ -55,7 +55,9 @@
         <%= link_to 'Log In', login_path %>
       <% end %>
     </div>
-    <div class='inner'>
+    <div>
+        <%= flash[:message] %>
+        
         <%= yield %>
     </div>
   

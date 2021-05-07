@@ -1,6 +1,6 @@
 <h1>Sign Up</h1>
 
-<%= render partial: 'errors/errors', locals: {model: @user} if @user %>
+<%= render partial: 'errors/errors', locals: {model: @user} if @user %> <!-- check this... it gets 2 errors -->
 
 <%= form_with(model: @user, url: signup_path)  do |f|%>
     <%= f.label :name %>
